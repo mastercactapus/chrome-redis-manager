@@ -1,0 +1,76 @@
+<html><head><link rel="import" href="bower_components/paper-input/paper-input.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
+
+</head><body><polymer-element name="connect-form">
+
+  <template>
+    <style>    
+      :host {
+        box-sizing: border-box;
+        padding: 1em;
+      }
+      .connect-btn[disabled] {
+        background: #eaeaea;
+        color: #a8a8a8;
+        cursor: auto;
+        pointer-events: none;
+      }
+      .container {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 100%;
+        align-items: baseline;
+        flex-basis: auto;
+      }
+      paper-input {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+      }
+      paper-checkbox {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+      }
+      #name {
+        flex-grow:1;
+      }
+      #redis_host {
+        flex-grow: 54;
+      }
+      #redis_port {
+        flex-grow:2;
+      }
+      #redis_password {
+        flex-grow:54;
+      }
+      .connect-btn {
+        margin-top: 1em;
+        background: #4285f4;
+        color: #fff;
+      }
+      .container.right {
+        justify-content: flex-end;
+      }
+
+    </style>
+    <div class="container">
+      <paper-input type="text" label="enter a name to save these settings" value="{{name}}" id="name"></paper-input>
+    </div>
+    <div class="container">
+      <paper-input type="text" value="{{redisHost}}" label="host [localhost]" id="redis_host"></paper-input>
+      <paper-input label="port [6379]" value="{{redisPort}}" type="number" pattern="^[0-9]+$" min="1" max="65535" id="redis_port"></paper-input>
+    </div>
+    <div class="container">
+        <paper-input type="password" id="redis_password" label="password" value="{{password}}"></paper-input>
+        <paper-checkbox label="Remember password" value="{{rememberPassword}}" disabled?="{{ password.length == 0 }}" id="remember_password"></paper-checkbox>
+    </div>
+    <div class="container right">
+      <paper-button raised="true" role="button" on-click="{{connect}}" class="connect-btn" id="connect">Connect</paper-button>
+    </div>
+    
+  </template>
+
+  <script src="connect-form.js"></script>
+
+</polymer-element>
+</body></html>

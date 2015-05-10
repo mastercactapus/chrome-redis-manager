@@ -1,0 +1,52 @@
+<html><head><link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="toolbar.html">
+<link rel="import" href="connect-form.html">
+<link rel="import" href="bower_components/paper-toast/paper-toast.html">
+
+</head><body><polymer-element name="redis-manager">
+
+  <template>
+    <style>    
+      :host {
+        box-sizing: border-box;
+      }
+    </style>
+
+  <section>
+    <core-toolbar id="core_toolbar">
+      <paper-menu-button>
+        <paper-icon-button icon="menu"></paper-icon-button>
+        <paper-dropdown class="dropdown">
+          <core-menu class="menu">
+            <template repeat="{{c in savedConnections}}">
+              <paper-item on-click="{{connectFromMenu}}" data-name="{{c.name}}">{{c.name}}</paper-item>
+            </template>
+          </core-menu>
+        </paper-dropdown>
+      </paper-menu-button>
+      <template if="{{ !!activeUrl }}">
+        <span flex="">{{safeUrl}}</span>
+      </template>
+      <template if="{{ !activeUrl }}">
+        <span flex=""><i>not currently connected</i></span>
+      </template>
+      
+    </core-toolbar>
+  </section>
+
+  <section>
+    <template if="{{ !connected }}">
+      <connect-form on-connect="{{connect}}"></connect-form>
+    </template>
+  </section>
+
+  <section>
+    <paper-toast id="notify" text="Sample toast here."></paper-toast>
+  </section>
+
+  </template>
+  <script src="bower_components/ioredis-chrome/dist/ioredis.js"></script>
+  <script src="redis-manager.html.0.js"></script>
+
+</polymer-element>
+</body></html>

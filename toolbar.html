@@ -1,0 +1,43 @@
+<html><head><link rel="import" href="bower_components/paper-menu-button/paper-menu-button.html">
+<link rel="import" href="bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="bower_components/paper-item/paper-item.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/core-menu/core-menu.html">
+<link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+
+</head><body><polymer-element name="ra-toolbar">
+
+  <template>
+    <style>    
+      :host {
+        box-sizing: border-box;
+      }
+      #core_toolbar {
+        color: rgb(255, 255, 255);
+        fill: rgb(255, 255, 255);
+        background-color: rgb(79, 125, 201);
+      }
+      paper-item {
+        color: black;
+      }
+    </style>
+    
+    <core-toolbar id="core_toolbar">
+      <paper-menu-button>
+        <paper-icon-button icon="menu"></paper-icon-button>
+        <paper-dropdown class="dropdown">
+          <core-menu class="menu">
+            <template repeat="{{c in savedConnections}}">
+              <paper-item on-click="{{connect}}" data-name="{{c.name}}">{{c.name}}</paper-item>
+            </template>
+          </core-menu>
+        </paper-dropdown>
+      </paper-menu-button>
+      <span flex="" id=""><i>not currently connected</i></span>
+    </core-toolbar>
+  </template>
+
+  <script src="toolbar.html.0.js"></script>
+
+</polymer-element>
+</body></html>

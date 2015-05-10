@@ -1,0 +1,14 @@
+{
+  "name": "redis-admin",
+  "description": "",
+  "homepage": "",
+  "keywords": [
+  ],
+  "author": "",
+  "private": true,
+  "dependencies": {
+    "ioredis-chrome": "~1.2.4-1",
+    "polymer": "Polymer/polymer#0.5.5",
+    "paper-elements": "Polymer/paper-elements#0.5.5"
+  }
+}
